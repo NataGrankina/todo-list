@@ -1,4 +1,4 @@
-define(["arrayHelper"], function(arrayHelper) {
+define(["lodash"], function(_) {
 	var todos = [];
 	var id = 1;
 
@@ -14,7 +14,7 @@ define(["arrayHelper"], function(arrayHelper) {
 	}
 
 	function getTodo(id) {
-		return arrayHelper.first(todos, function(item) {
+		return _.find(todos, function(item) {
 			return item.id === id;
 		});
 	}
@@ -26,8 +26,8 @@ define(["arrayHelper"], function(arrayHelper) {
 			todo.isDone = !todo.isDone;
 	}
 
-	function setAllTodosDone(isDone) {
-		todos.forEach(function(todo) {
+	function setAllTodosState(isDone) {
+		_.forEach(todos, function(todo) {
 			todo.isDone = isDone;
 		});
 	}
@@ -42,11 +42,18 @@ define(["arrayHelper"], function(arrayHelper) {
 
 	function getCompletedItems() {
 		return todos.filter(value =>  value.isDone);
-	}	
+	}
+
+	function removeTodo(id) {
+		_.remove(todos, function(todo) {
+			return todo.id === id;
+		});
+	}
 
 	return {
 		addTodo: addTodo,
 		getTodo: getTodo,
+		removeTodo: removeTodo,
 		toggleTodo: toggleTodo,
 		clearCompleted: clearCompleted,
 		getItemsLeft: getItemsLeft,
@@ -54,7 +61,16 @@ define(["arrayHelper"], function(arrayHelper) {
 		get сount() {
 			return todos.length;
 		},
-		setAllTodosDone: setAllTodosDone
+		get areAllActive() {
+			return !(_.some(todos, { isDone: true }));
+		},
+		get areAllCompleted() {
+			return _.some(todos) && !(_.some(todos, { isDone: false }));
+		},
+		get itemsLeft() {
+			return _.where(todos, { isDone: false }).length;
+		},
+		setAllTodosState: setAllTodosState
 	};
 });
 

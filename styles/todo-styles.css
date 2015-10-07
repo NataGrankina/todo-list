@@ -70,6 +70,23 @@ body {
     display: inline-block;    
     vertical-align: middle;
 }
+.todo-delete {
+    position: relative;
+    /*display: none;*/
+    display: inline-block;
+    opacity: 0;    
+    vertical-align: middle;
+    float: right;
+    margin: 0 5px;
+    color: rgb(204, 154, 154);
+    transform: scale(0.1);
+    transition: all .2s .2s ease-in-out;
+}
+.todo-item:hover .todo-delete { 
+  /*display: inline-block;*/
+  opacity: 1;
+  transform: none;
+}
 .todos-container > .todo-input > input {
 	width: 90%;
 	height: 100%;
@@ -88,12 +105,18 @@ body {
 	text-align: center;
 	vertical-align: middle;
 }
-.todos-central-container {
+.todos-footer > div {
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	text-align: center;
+}
+.todo-item > div {
 	position: relative;
   	top: 50%;
   	transform: translateY(-50%);
 }
-.todos-central-container > .todos-selection-button {
+.todos-selection-button {
 	margin: 5px;
 	border-width: 1px;
 	border-radius: 2px;
@@ -104,14 +127,26 @@ body {
 	font-size: 14px;
 	font-weight: 300;
 }
-.todos-central-container > .todos-selection-button:hover {
+.todos-selection-button:hover {
 	border-color: rgba(175, 47, 47, 0.09);
 	border-style: solid;
 }
-.todos-central-container > .todos-selection-button.button-active {
+.todos-selection-button.button-active {
 	border-color: rgba(175, 47, 47, 0.15);
 	border-style: solid;
 	border-width: 2px;
+}
+.todos-counter {
+	float: left;
+	font-size: 14px;
+	font-weight: 300;
+    margin: 0 5px;
+}
+.todos-cleaner {
+	float: right;
+	font-size: 14px;
+	font-weight: 300;
+    margin: 0 5px;
 }
 .hidden {
 	display: none;

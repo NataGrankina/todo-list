@@ -1,0 +1,20 @@
+{
+  "name": "bower.json",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "text": "~2.0.14",
+    "lodash": "~3.10.1"
+  }
+}

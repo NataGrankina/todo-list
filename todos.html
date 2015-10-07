@@ -9,18 +9,20 @@
 		<h1>todos</h1>
 		<div class="todos-container">
 			<div class="todo-input">
-				<a><i id="toggle-all" data-state="inactive" class="fa fa-check"></i></a>
+				<a><i id="toggle-all" class="fa fa-check"></i></a>
 				<input type="text" id="todo-input" placeholder="What needs to be done?"><br>
 			</div>
 			<div>
 				<ul class="todos-list" id="todos-list"></ul>
 			</div>	
-			<div id="todos-footer" class="todos-footer hidden">
-				<div class="todos-central-container" id="todos-selection-container">
+			<div id="todos-footer" class="todos-footer hidden">				
+				<div id="todos-selection-container">
+					<label class="todos-counter"></label>
 					<button class="button-active todos-selection-button" data-selection-type="all">All</button>
 					<button class="todos-selection-button" data-selection-type="active">Active</button>
 					<button class="todos-selection-button" data-selection-type="completed">Completed</button>
-				</div>
+					<a href="#" class="todos-cleaner hidden">Clear completed</a>
+				</div>				
 			</div>
 		</div>	
 		
