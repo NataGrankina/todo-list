@@ -1,0 +1,118 @@
+ul {
+	list-style-type: none;
+}
+.todo-checkbox:checked + .todo-label {
+	text-decoration: line-through;
+}
+h1 {
+	font-size: 100px;
+	font-weight: 100;
+	color: rgba(175, 47, 47, 0.15);
+	text-align: center;
+	margin: 0 auto;
+}	
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: rgb(77, 77, 77);
+}
+.todos-container > .todo-input > a {	
+	width: 10%;
+}
+
+.todos-container > .todo-input > a > i {	
+	color: #AAA;
+}
+
+.todos-container > .todo-input > a >i.active {
+	color:#000;
+}
+.todos-container {
+	width: 550px;
+	margin: 0 auto;
+	font-size: 24px;
+	font-weight: 300;
+	font-style: normal;
+	font-variant: normal;
+	border-width: 1px;
+	border-color: #AAA;	
+	border-style: solid;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+.todo-input {
+	height: 65px;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-color: #AAA;
+	border-bottom-style: solid;		
+}
+.todos-list {
+	width: 100%;		
+	height: auto;	
+	margin: 0;
+	padding: 0;	
+}
+.todo-item {
+	width: 100%;
+	height: 60px;
+	display: block;
+	padding: 0;
+	border-bottom-width: 1px;
+	border-bottom-color: #AAA;
+	border-bottom-style: solid;	
+}
+.todo-checkbox {
+	width: 20px;
+	position: relative;
+    vertical-align: middle; 
+}
+.todo-label {
+    position: relative;
+    display: inline-block;    
+    vertical-align: middle;
+}
+.todos-container > .todo-input > input {
+	width: 90%;
+	height: 100%;
+	border: none;
+	padding: 0;
+	outline-style: none;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	font-weight: 300;
+	font-style: normal;
+	font-variant: normal;
+}
+.todos-footer {
+	width:100%;
+	height:50px;
+	text-align: center;
+	vertical-align: middle;
+}
+.todos-central-container {
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+.todos-central-container > .todos-selection-button {
+	margin: 5px;
+	border-width: 1px;
+	border-radius: 2px;
+	border-color: transparent;
+	background-color: transparent;
+	outline-style: none;
+	color:rgb(119, 119, 119);
+	font-size: 14px;
+	font-weight: 300;
+}
+.todos-central-container > .todos-selection-button:hover {
+	border-color: rgba(175, 47, 47, 0.09);
+	border-style: solid;
+}
+.todos-central-container > .todos-selection-button.button-active {
+	border-color: rgba(175, 47, 47, 0.15);
+	border-style: solid;
+	border-width: 2px;
+}
+.hidden {
+	display: none;
+}
