@@ -131,11 +131,6 @@ body {
 	border-color: rgba(175, 47, 47, 0.09);
 	border-style: solid;
 }
-.todos-selection-button.button-active {
-	border-color: rgba(175, 47, 47, 0.15);
-	border-style: solid;
-	border-width: 2px;
-}
 .todos-counter {
 	float: left;
 	font-size: 14px;
@@ -148,6 +143,32 @@ body {
 	font-weight: 300;
     margin: 0 5px;
 }
+
 .hidden {
+	display: none;
+}
+
+.todos-container[data-selection-type=all] button[data-selection-type=all] {
+	border-color: rgba(175, 47, 47, 0.15);
+	border-style: solid;
+	border-width: 2px;
+}
+.todos-container[data-selection-type=active] button[data-selection-type=active] {
+	border-color: rgba(175, 47, 47, 0.15);
+	border-style: solid;
+	border-width: 2px;
+}
+.todos-container[data-selection-type=completed] button[data-selection-type=completed] {
+	border-color: rgba(175, 47, 47, 0.15);
+	border-style: solid;
+	border-width: 2px;
+}
+.todos-container[data-selection-type=active] li.checked {
+	display: none;
+}
+.todos-container[data-selection-type=completed] li:not(.checked) {
+	display: none;
+}
+.todos-list:empty ~ .todos-footer {
 	display: none;
 }

@@ -1,14 +1,12 @@
 define(["todos", "lodash"], function(todos, _) {
+	var todosContainer = document.querySelector(".todos-container");
 	var todoList = document.querySelector(".todos-list");
 	var todosSelectionContainer = document.getElementById("todos-selection-container");
-	var todosFooter = document.getElementById("todos-footer");
 	var toggleAll = document.getElementById("toggle-all");
 	var clearCompletedButton = document.querySelector(".todos-cleaner");
 
-	var selectionType = "all";
-
 	function initialize() {
-		var todoInput = document.getElementById("todo-input");
+		var todoInput = document.querySelector(".todo-input > input");
 		todoInput.addEventListener("keyup", onTodoKeyup);		
 		todosSelectionContainer.addEventListener("click", onSelectionTypeChanging);
 		toggleAll.addEventListener("click", onToggledAll);
@@ -21,7 +19,6 @@ define(["todos", "lodash"], function(todos, _) {
 		if (event.target.classList.contains("todo-checkbox")) {			
 	    	todos.toggleTodo(id);
 	    	toggleCheckedClass(event.currentTarget);
-	    	showSelection();
 		}
 
 		if (event.target.classList.contains("todo-delete")) {
@@ -42,14 +39,12 @@ define(["todos", "lodash"], function(todos, _) {
 			});
 			itemsToDelete.push(itemToDelete);
 		});
-		_.forEach(itemsToDelete, function (item) {
+		_.forEach(itemsToDelete, function(item) {
 			todoList.removeChild(item);
 		});
 
 		todos.clearCompleted();
 		updateToggleAllState();
-
-		if (!todos.count) todosFooter.classList.add("hidden");
 	}
 
 	function updateToggleAllState(){
@@ -66,24 +61,7 @@ define(["todos", "lodash"], function(todos, _) {
 	function onSelectionTypeChanging(event) {
 		if (!event.target.classList.contains("todos-selection-button")) return;
 
-		updateSelectionButtonsStyle(event.target);
-
-		selectionType = event.target.dataset.selectionType;
-		showSelection(selectionType);		
-	}
-
-	function showSelection() {
-		switch (selectionType) {
-			case "all": 
-				showAllTodos();
-				break;
-			case "active":
-				showActiveTodos();
-				break;
-			case "completed":
-				showCompletedTodos();
-				break;
-		}		
+		todosContainer.dataset.selectionType = event.target.dataset.selectionType;
 	}
 
 	function onToggledAll() {
@@ -100,51 +78,11 @@ define(["todos", "lodash"], function(todos, _) {
 	    else todoItem.classList.remove("checked");
 	}
 
-	function updateSelectionButtonsStyle(selectedButton) {
-		var selectionButtons = todosSelectionContainer.getElementsByClassName("todos-selection-button");
-		_.forEach(selectionButtons, function(button) {
-			button.classList.remove("button-active");
-		});
-		selectedButton.classList.add("button-active");
-	}
-
-	function showAllTodos() {
-		var allTodos = getTodos(function(todoItem) {
-			return true;
-		});
-		setTodosVisibility(allTodos);
-	}
-
-	function showActiveTodos() {
-		var activeTodos = getTodos(function(todoItem) {
-			return !isTodoDone(todoItem)
-		});
-		setTodosVisibility(activeTodos);
-	}
-
-	function showCompletedTodos() {
-		var completedTodos = getTodos(function(todoItem) {
-			return isTodoDone(todoItem)
-		});
-		setTodosVisibility(completedTodos);
-	}
-
-	function setTodosVisibility(visibleTodos) {
-		var allTodos = getAllTodos();
-		for (var i = 0; i < allTodos.length; i++) {
-			allTodos[i].classList.add("hidden");
-		};
-		for (var i = 0; i < visibleTodos.length; i++) {
-			visibleTodos[i].classList.remove("hidden");
-		};
-	}
-
 	function updateTodoItemsDone() {
-		var allTodos = getAllTodos();
+		var allTodos = document.querySelectorAll(".todo-item");
 		for (var i = 0; i < allTodos.length; i++) {
 			updateTodoItemDone(allTodos[i]);
 		};
-		showSelection();
 	}
 
 	function updateTodoItemDone(todoItem) {	
@@ -155,26 +93,8 @@ define(["todos", "lodash"], function(todos, _) {
 		toggleCheckedClass(todoItem);
 	}
 
-	function getTodos(predicate) {
-		var allTodos = todoList.getElementsByClassName("todo-item");
-		return _.filter(allTodos, function(todoItem) {
-			return predicate(todoItem);
-		});
-	}
-
-	function getAllTodos() {
-		return getTodos(function(todoItem) {
-			return true;
-		});
-	}
-
 	function getTodoId(todoItem) {
 		return parseInt(todoItem.dataset.id);
-	}
-
-	function isTodoDone(todoItem) {
-		var todo = todos.getTodo(getTodoId(todoItem));
-		return todo.isDone;
 	}
 
 	function onTodoKeyup(event) {
@@ -185,8 +105,6 @@ define(["todos", "lodash"], function(todos, _) {
 		var todoName = input.value;
 		if (!todoName)
 			return;
-
-		if (!todos.count) todosFooter.classList.remove("hidden");
 
 		var newTodo = todos.addTodo(todoName);		
 		createTodoItem(newTodo);

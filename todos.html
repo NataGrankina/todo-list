@@ -7,18 +7,16 @@
 	</head>
 	<body>
 		<h1>todos</h1>
-		<div class="todos-container">
+		<div class="todos-container" data-selection-type="all">
 			<div class="todo-input">
-				<a><i id="toggle-all" class="fa fa-check"></i></a>
-				<input type="text" id="todo-input" placeholder="What needs to be done?"><br>
+				<a href="#"><i id="toggle-all" class="fa fa-check"></i></a>
+				<input type="text" placeholder="What needs to be done?"><br>
 			</div>
-			<div>
-				<ul class="todos-list" id="todos-list"></ul>
-			</div>	
-			<div id="todos-footer" class="todos-footer hidden">				
+			<ul class="todos-list" id="todos-list"></ul>
+			<div class="todos-footer">				
 				<div id="todos-selection-container">
 					<label class="todos-counter"></label>
-					<button class="button-active todos-selection-button" data-selection-type="all">All</button>
+					<button class="todos-selection-button" data-selection-type="all">All</button>
 					<button class="todos-selection-button" data-selection-type="active">Active</button>
 					<button class="todos-selection-button" data-selection-type="completed">Completed</button>
 					<a href="#" class="todos-cleaner hidden">Clear completed</a>

@@ -56,7 +56,6 @@ define(["lodash"], function(_) {
 		removeTodo: removeTodo,
 		toggleTodo: toggleTodo,
 		clearCompleted: clearCompleted,
-		getItemsLeft: getItemsLeft,
 		getCompletedItems: getCompletedItems,
 		get сount() {
 			return todos.length;
