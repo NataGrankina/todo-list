@@ -1,7 +1,7 @@
 define(["todos", "lodash"], function(todos, _) {
 	var todosContainer = document.querySelector(".todos-container");
 	var todoList = document.querySelector(".todos-list");
-	var todosSelectionContainer = document.getElementById("todos-selection-container");
+	var todosSelectionContainer = document.querySelector(".todos-selection-container");
 	var toggleAll = document.getElementById("toggle-all");
 	var clearCompletedButton = document.querySelector(".todos-cleaner");
 
